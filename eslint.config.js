@@ -1,8 +1,8 @@
 // @ts-check
 import styleMigrate from '@stylistic/eslint-plugin-migrate'
-import antfu from './dist/index.js'
+import bclint from './dist/index.js'
 
-export default antfu(
+export default bclint(
   {
     vue: true,
     typescript: true,
