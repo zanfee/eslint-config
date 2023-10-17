@@ -1,5 +1,5 @@
-import type { ConfigItem } from '../types'
-import { pluginSortKeys } from '../plugins'
+import type { ConfigItem } from '@antfu/eslint-config'
+import { sortKeys as antfuSortKeys } from '@antfu/eslint-config'
 
 /**
  * Optional sort-keys plugin
@@ -8,11 +8,6 @@ import { pluginSortKeys } from '../plugins'
  */
 export function sortKeys(): ConfigItem[] {
   return [
-    {
-      name: 'antfu:sort-keys',
-      plugins: {
-        'sort-keys': pluginSortKeys,
-      },
-    },
+    ...antfuSortKeys(),
   ]
 }

@@ -1,10 +1,8 @@
-import type { ConfigItem } from '../types'
-import { GLOB_EXCLUDE } from '../globs'
+import type { ConfigItem } from '@antfu/eslint-config'
+import { ignores as antfuIgnores } from '@antfu/eslint-config'
 
 export function ignores(): ConfigItem[] {
   return [
-    {
-      ignores: GLOB_EXCLUDE,
-    },
+    ...antfuIgnores(),
   ]
 }

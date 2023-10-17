@@ -2,7 +2,8 @@ import process from 'node:process'
 import fs from 'node:fs'
 import { isPackageExists } from 'local-pkg'
 import gitignore from 'eslint-config-flat-gitignore'
-import type { ConfigItem, OptionsConfig } from './types'
+import type { ConfigItem, OptionsConfig } from '@antfu/eslint-config'
+import { combine } from '@antfu/eslint-config'
 import {
   comments,
   ignores,
@@ -22,7 +23,6 @@ import {
   vue,
   yaml,
 } from './configs'
-import { combine } from './utils'
 
 const flatConfigProps: (keyof ConfigItem)[] = [
   'files',
