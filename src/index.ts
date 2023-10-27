@@ -1,9 +1,2 @@
-import { bclint } from './factory'
-
-export * from './factory'
-export * from './configs'
-export * from './plugins'
-export * from './utils'
-export * from './globs'
-
-export default bclint
+export { antfu as bclint } from '@antfu/eslint-config'
+export * from '@antfu/eslint-config'
