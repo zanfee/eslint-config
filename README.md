@@ -21,7 +21,7 @@
 ### Install
 
 ```bash
-pnpm i -D eslint @antfu/eslint-config
+pnpm i -D eslint @bechtle/eslint-config
 ```
 
 ### Create config file
@@ -30,18 +30,18 @@ With [`"type": "module"`](https://nodejs.org/api/packages.html#type) in `package
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import bclint from '@bechtle/eslint-config'
 
-export default antfu()
+export default bclint()
 ```
 
 With CJS:
 
 ```js
 // eslint.config.js
-const antfu = require('@antfu/eslint-config').default
+const bclint = require('@bechtle/eslint-config').default
 
-module.exports = antfu()
+module.exports = bclint()
 ```
 
 > Note that `.eslintignore` no longer works in Flat config, see [customization](#customization) for more details.
@@ -113,22 +113,22 @@ Add the following settings to your `.vscode/settings.json`:
 
 Since v1.0, we migrated to [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new). It provides much better organization and composition.
 
-Normally you only need to import the `antfu` preset:
+Normally you only need to import the `bclint` preset:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import bclint from '@bechtle/eslint-config'
 
-export default antfu()
+export default bclint()
 ```
 
 And that's it! Or you can configure each integration individually, for example:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import bclint from '@bechtle/eslint-config'
 
-export default antfu({
+export default bclint({
   // Enable stylistic formatting rules
   // stylistic: true,
 
@@ -154,15 +154,15 @@ export default antfu({
 })
 ```
 
-The `antfu` factory function also accepts any number of arbitrary custom config overrides:
+The `bclint` factory function also accepts any number of arbitrary custom config overrides:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import bclint from '@bechtle/eslint-config'
 
-export default antfu(
+export default bclint(
   {
-    // Configures for antfu's config
+    // Configures for bclint's config
   },
 
   // From the second arguments they are ESLint Flat Configs
@@ -202,7 +202,7 @@ import {
   unicorn,
   vue,
   yaml,
-} from '@antfu/eslint-config'
+} from '@bechtle/eslint-config'
 
 export default [
   ...ignores(),
@@ -255,9 +255,9 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import bclint from '@bechtle/eslint-config'
 
-export default antfu(
+export default bclint(
   { vue: true, typescript: true },
   {
     // Remember to specify the file glob here, otherwise it might cause the vue plugin to handle non-vue files
@@ -279,9 +279,9 @@ We also provided an `overrides` options to make it easier:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import bclint from '@bechtle/eslint-config'
 
-export default antfu({
+export default bclint({
   overrides: {
     vue: {
       'vue/operator-linebreak': ['error', 'before'],
@@ -323,9 +323,9 @@ You can optionally enable the [type aware rules](https://typescript-eslint.io/li
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import bclint from '@bechtle/eslint-config'
 
-export default antfu({
+export default bclint({
   typescript: {
     tsconfigPath: 'tsconfig.json',
   },
@@ -367,7 +367,7 @@ If you enjoy this code style, and would like to mention it in your project, here
 
 ### Prettier?
 
-[Why I don't use Prettier](https://antfu.me/posts/why-not-prettier)
+[Why we don't use Prettier](https://antfu.me/posts/why-not-prettier)
 
 ### How to lint CSS?
 
@@ -377,12 +377,9 @@ This config does NOT lint CSS. I personally use [UnoCSS](https://github.com/unoc
 
 Sure, you can config and override rules locally in your project to fit your needs. If that still does not work for you, you can always fork this repo and maintain your own.
 
-## Check Also
+## Credits
 
-- [antfu/dotfiles](https://github.com/antfu/dotfiles) - My dotfiles
-- [antfu/vscode-settings](https://github.com/antfu/vscode-settings) - My VS Code settings
-- [antfu/ts-starter](https://github.com/antfu/ts-starter) - My starter template for TypeScript library
-- [antfu/vitesse](https://github.com/antfu/vitesse) - My starter template for Vue & Vite app
+- [antfu/eslint-config](https://github.com/antfu/eslint-config) - This config builds upon it
 
 ## License
 
