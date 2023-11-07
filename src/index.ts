@@ -1,2 +1,5 @@
-export { antfu as bclint } from '@antfu/eslint-config'
+import { bclint } from './factory'
+
 export * from '@antfu/eslint-config'
+
+export default bclint
