@@ -44,6 +44,32 @@ const bclint = require('@bechtle/eslint-config').default
 module.exports = bclint()
 ```
 
+Combined with legacy config:
+
+```js
+// eslint.config.js
+const antfu = require('@antfu/eslint-config').default
+const { FlatCompat } = require('@eslint/eslintrc')
+
+const compat = new FlatCompat()
+
+module.exports = antfu(
+  {
+    ignores: [],
+  },
+
+  // Legacy config
+  ...compat.config({
+    extends: [
+      'eslint:recommended',
+      // Other extends...
+    ],
+  })
+
+  // Other flat configs...
+)
+```
+
 > Note that `.eslintignore` no longer works in Flat config, see [customization](#customization) for more details.
 
 ### Add script for package.json
