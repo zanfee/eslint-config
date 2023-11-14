@@ -1,5 +1,5 @@
 {
-  "name": "@bechtle/eslint-config",
+  "name": "@zanfee/eslint-config",
   "type": "module",
   "version": "0.1.0",
   "packageManager": "pnpm@8.9.2",
