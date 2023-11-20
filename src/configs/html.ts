@@ -26,7 +26,7 @@ export function html(options: OptionsStylistic & OptionsOverrides = {}): ConfigI
         '@html-eslint/indent': ['error', indent],
         '@html-eslint/no-duplicate-attrs': 'error',
         '@html-eslint/no-duplicate-id': 'error',
-        '@html-eslint/no-extra-spacing-attrs': 'error',
+        '@html-eslint/no-extra-spacing-attrs': ['error', { enforceBeforeSelfClose: true }],
         '@html-eslint/no-multiple-h1': 'error',
         '@html-eslint/no-obsolete-tags': 'error',
         '@html-eslint/quotes': ['error', 'double'],

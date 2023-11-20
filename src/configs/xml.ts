@@ -26,7 +26,7 @@ export function xml(options: OptionsStylistic & OptionsOverrides = {}): ConfigIt
         '@html-eslint/indent': ['error', indent],
         '@html-eslint/no-duplicate-attrs': 'error',
         '@html-eslint/no-duplicate-id': 'error',
-        '@html-eslint/no-extra-spacing-attrs': 'error',
+        '@html-eslint/no-extra-spacing-attrs': ['error', { enforceBeforeSelfClose: true }],
         '@html-eslint/no-obsolete-tags': 'error',
         '@html-eslint/quotes': ['error', 'double'],
         '@html-eslint/require-img-alt': 'error',
