@@ -13,7 +13,7 @@ export function html(options: OptionsStylistic & OptionsOverrides = {}): ConfigI
 
   return [
     {
-      files: ['*.html'],
+      files: ['**/*.html'],
       languageOptions: {
         parser: parserHtml,
       },
@@ -36,6 +36,7 @@ export function html(options: OptionsStylistic & OptionsOverrides = {}): ConfigI
         '@html-eslint/require-li-container': 'error',
         '@html-eslint/require-title': 'error',
 
+        // Disabled because it caused errors
         'style/spaced-comment': 'off',
 
         ...overrides,

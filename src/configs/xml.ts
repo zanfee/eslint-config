@@ -13,7 +13,7 @@ export function xml(options: OptionsStylistic & OptionsOverrides = {}): ConfigIt
 
   return [
     {
-      files: ['*.xml'],
+      files: ['**/*.xml'],
       languageOptions: {
         parser: parserHtml,
       },
@@ -33,6 +33,7 @@ export function xml(options: OptionsStylistic & OptionsOverrides = {}): ConfigIt
         '@html-eslint/require-li-container': 'error',
         '@html-eslint/require-title': 'error',
 
+        // Disabled because it caused errors
         'style/spaced-comment': 'off',
 
         ...overrides,
