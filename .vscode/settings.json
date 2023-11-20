@@ -36,6 +36,7 @@
     "markdown",
     "json",
     "jsonc",
+    "xml",
     "yaml"
   ]
 }
