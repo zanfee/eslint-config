@@ -1,7 +1,7 @@
-import type { ConfigItem, OptionsOverrides, OptionsStylistic } from '@antfu/eslint-config'
+import type { FlatConfigItem, OptionsOverrides, OptionsStylistic } from '@antfu/eslint-config'
 import { parserHtml, pluginHtml } from '../plugins'
 
-export function html(options: OptionsStylistic & OptionsOverrides = {}): ConfigItem[] {
+export async function html(options: OptionsStylistic & OptionsOverrides = {}): Promise<FlatConfigItem[]> {
   const {
     overrides = {},
     stylistic = true,

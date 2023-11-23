@@ -1,6 +1,6 @@
-import type { ConfigItem } from '@antfu/eslint-config'
+import type { FlatConfigItem } from '@antfu/eslint-config'
 
-export function bcstylistic(): ConfigItem[] {
+export async function bcstylistic(): Promise<FlatConfigItem[]> {
   return [
     {
       name: 'bechtle:stylistic',
