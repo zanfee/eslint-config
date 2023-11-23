@@ -32,7 +32,7 @@ With [`"type": "module"`](https://nodejs.org/api/packages.html#type) in `package
 // eslint.config.js
 import bclint from '@bechtle/eslint-config'
 
-export default bclint()
+export default await bclint()
 ```
 
 With CJS:
@@ -84,6 +84,16 @@ For example:
   }
 }
 ```
+
+### Migration
+
+We provided an experimental CLI tool to help you migrate from the legacy config to the new flat config.
+
+```bash
+npx @antfu/eslint-config@latest
+```
+
+Before running the migration, make sure to commit your unsaved changes first.
 
 ## VS Code support (auto fix)
 
@@ -145,7 +155,7 @@ Normally you only need to import the `bclint` preset:
 // eslint.config.js
 import bclint from '@bechtle/eslint-config'
 
-export default bclint()
+export default await bclint()
 ```
 
 And that's it! Or you can configure each integration individually, for example:
@@ -154,7 +164,7 @@ And that's it! Or you can configure each integration individually, for example:
 // eslint.config.js
 import bclint from '@bechtle/eslint-config'
 
-export default bclint({
+export default await bclint({
   // Enable stylistic formatting rules
   // stylistic: true,
 
@@ -186,7 +196,7 @@ The `bclint` factory function also accepts any number of arbitrary custom config
 // eslint.config.js
 import bclint from '@bechtle/eslint-config'
 
-export default bclint(
+export default await bclint(
   {
     // Configures for bclint's config
   },
@@ -213,6 +223,7 @@ We don't recommend using this style in general usages, as there are shared optio
 ```js
 // eslint.config.js
 import {
+  combine,
   comments,
   ignores,
   imports,
@@ -230,21 +241,21 @@ import {
   yaml,
 } from '@bechtle/eslint-config'
 
-export default [
-  ...ignores(),
-  ...javascript(/* Options */),
-  ...comments(),
-  ...node(),
-  ...jsdoc(),
-  ...imports(),
-  ...unicorn(),
-  ...typescript(/* Options */),
-  ...stylistic(),
-  ...vue(),
-  ...jsonc(),
-  ...yaml(),
-  ...markdown(),
-]
+export default await combine(
+  ignores(),
+  javascript(/* Options */),
+  comments(),
+  node(),
+  jsdoc(),
+  imports(),
+  unicorn(),
+  typescript(/* Options */),
+  stylistic(),
+  vue(),
+  jsonc(),
+  yaml(),
+  markdown(),
+)
 ```
 
 </details>
@@ -283,7 +294,7 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 // eslint.config.js
 import bclint from '@bechtle/eslint-config'
 
-export default bclint(
+export default await bclint(
   { vue: true, typescript: true },
   {
     // Remember to specify the file glob here, otherwise it might cause the vue plugin to handle non-vue files
@@ -301,7 +312,7 @@ export default bclint(
 )
 ```
 
-We also provided an `overrides` options to make it easier:
+We also provided a `overrides` options to make it easier:
 
 ```js
 // eslint.config.js
@@ -319,6 +330,29 @@ export default bclint({
     // ...
   }
 })
+```
+
+### Optional Configs
+
+#### React
+
+We do include configs for React. But due to the install size of React plugins we didn't include the dependencies by default.
+
+To enable React support, need to explicitly turn it on:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  react: true,
+})
+```
+
+Running `npx eslint` should prompt you to install the required dependencies, otherwise you can install them manually:
+
+```bash
+npm i -D eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh
 ```
 
 ### Optional Rules

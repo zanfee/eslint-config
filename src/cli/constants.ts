@@ -1,4 +1,15 @@
-{
+import c from 'picocolors'
+import { devDependencies, version } from '../../package.json'
+
+export const ARROW = c.cyan('→')
+export const CHECK = c.green('✔')
+export const CROSS = c.red('✘')
+export const WARN = c.yellow('ℹ')
+
+export const eslintVersion = devDependencies.eslint
+export { version }
+
+export const vscodeSettingsString = `
   // Enable the ESlint flat config support
   "eslint.experimental.useFlatConfig": true,
 
@@ -36,14 +47,6 @@
     "markdown",
     "json",
     "jsonc",
-    "xml",
     "yaml"
-  ],
-
-  "pair-diff.patterns": [
-    {
-      "source": "./fixtures/output/**/*.*",
-      "target": "./fixtures/input/<base>"
-    }
   ]
-}
+`

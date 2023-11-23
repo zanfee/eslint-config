@@ -5,6 +5,7 @@ import bclint from './dist/index.js'
 export default bclint(
   {
     vue: true,
+    // react: true,
     typescript: true,
     ignores: [
       'fixtures',

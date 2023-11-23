@@ -1,12 +1,12 @@
 import { antfu } from '@antfu/eslint-config'
-import type { ConfigItem } from '@antfu/eslint-config'
+import type { Awaitable, FlatConfigItem, UserConfigItem } from '@antfu/eslint-config'
 import { bcstylistic, html, xml } from './configs'
 import type { OptionsConfig } from './types'
 
 /**
  * Construct an array of ESLint flat config items.
  */
-export function bclint(options: OptionsConfig & ConfigItem = {}, ...userConfigs: (ConfigItem | ConfigItem[])[]) {
+export function bclint(options: OptionsConfig & FlatConfigItem = {}, ...userConfigs: Awaitable<UserConfigItem | UserConfigItem[]>[]): Promise<UserConfigItem[]> {
   const {
     bcstylistic: enableBcstylistic = true,
     html: enableHtml = true,
@@ -14,7 +14,7 @@ export function bclint(options: OptionsConfig & ConfigItem = {}, ...userConfigs:
     xml: enableXml = true,
   } = options
 
-  const configs: ConfigItem[][] = []
+  const configs: Awaitable<FlatConfigItem[]>[] = []
 
   // Base configs
   if (enableBcstylistic)
