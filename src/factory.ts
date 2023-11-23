@@ -17,8 +17,9 @@ export function bclint(options: OptionsConfig & FlatConfigItem = {}, ...userConf
   const configs: Awaitable<FlatConfigItem[]>[] = []
 
   // Base configs
-  if (enableBcstylistic)
+  if (enableBcstylistic) {
     configs.push(bcstylistic())
+  }
 
   if (enableHtml) {
     configs.push(html({

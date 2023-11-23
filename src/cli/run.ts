@@ -33,8 +33,9 @@ export async function run(options: RuleOptions = {}) {
     return
   }
 
-  if (!SKIP_GIT_CHECK && !isGitClean())
+  if (!SKIP_GIT_CHECK && !isGitClean()) {
     throw new Error('There are uncommitted changes in the current repository, please commit them and try again')
+  }
 
   // Update package.json
   console.log(c.cyan(`${ARROW} bumping @antfu/eslint-config to v${version}`))
@@ -44,8 +45,9 @@ export async function run(options: RuleOptions = {}) {
   pkg.devDependencies ??= {}
   pkg.devDependencies['@antfu/eslint-config'] = `^${version}`
 
-  if (!pkg.devDependencies.eslint)
+  if (!pkg.devDependencies.eslint) {
     pkg.devDependencies.eslint = eslintVersion
+  }
 
   await fsp.writeFile(pathPackageJSON, JSON.stringify(pkg, null, 2))
   console.log(c.green(`${CHECK} changes wrote to package.json`))
@@ -60,10 +62,12 @@ export async function run(options: RuleOptions = {}) {
     const globs = parsed.globs()
 
     for (const glob of globs) {
-      if (glob.type === 'ignore')
+      if (glob.type === 'ignore') {
         eslintIgnores.push(...glob.patterns)
-      else if (glob.type === 'unignore')
+      }
+      else if (glob.type === 'unignore') {
         eslintIgnores.push(...glob.patterns.map((pattern: string) => `!${pattern}`))
+      }
     }
   }
 
@@ -91,8 +95,9 @@ module.exports = antfu({\n${antfuConfig}\n})
   const files = fs.readdirSync(cwd)
   const legacyConfig: string[] = []
   files.forEach((file) => {
-    if (file.includes('eslint') || file.includes('prettier'))
+    if (file.includes('eslint') || file.includes('prettier')) {
       legacyConfig.push(file)
+    }
   })
   if (legacyConfig.length) {
     console.log(`${WARN} you can now remove those files manually:`)
@@ -128,8 +133,9 @@ module.exports = antfu({\n${antfuConfig}\n})
     const dotVscodePath: string = path.join(cwd, '.vscode')
     const settingsPath: string = path.join(dotVscodePath, 'settings.json')
 
-    if (!fs.existsSync(dotVscodePath))
+    if (!fs.existsSync(dotVscodePath)) {
       await fsp.mkdir(dotVscodePath, { recursive: true })
+    }
 
     if (!fs.existsSync(settingsPath)) {
       await fsp.writeFile(settingsPath, `{${vscodeSettingsString}}\n`, 'utf-8')

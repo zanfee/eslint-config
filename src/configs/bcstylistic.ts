@@ -5,7 +5,8 @@ export async function bcstylistic(): Promise<FlatConfigItem[]> {
     {
       name: 'bechtle:stylistic',
       rules: {
-
+        'curly': ['error', 'all'],
+        'style/brace-style': ['error', 'stroustrup'],
       },
     },
   ]
