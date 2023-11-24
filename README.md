@@ -45,12 +45,12 @@ Combined with legacy config:
 
 ```js
 // eslint.config.js
-const antfu = require('@antfu/eslint-config').default
+const bclint = require('eslint-config-janfr').default
 const { FlatCompat } = require('@eslint/eslintrc')
 
 const compat = new FlatCompat()
 
-module.exports = antfu(
+module.exports = bclint(
   {
     ignores: [],
   },
