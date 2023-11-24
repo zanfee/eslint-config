@@ -13,9 +13,6 @@
 - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 - **Style principle**: Minimal for reading, stable for diff, consistent
 
-> [!IMPORTANT]
-> Since v1.0.0, this config is rewritten to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check the [release note](https://github.com/antfu/eslint-config/releases/tag/v1.0.0) for more details.
-
 ## Usage
 
 ### Install
