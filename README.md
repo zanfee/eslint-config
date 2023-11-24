@@ -5,7 +5,7 @@
 - Single quotes, no semi
 - Auto fix for formatting (aimed to be used standalone **without** Prettier)
 - Designed to work with TypeScript, JSX, Vue out-of-box
-- Lints also for json, yaml, markdown
+- Lints also for json, yaml, markdown, html, xml
 - Sorted imports, dangling commas
 - Reasonable defaults, best practices, only one-line of config
 - Respects `.gitignore` by default
@@ -137,7 +137,8 @@ Add the following settings to your `.vscode/settings.json`:
     "markdown",
     "json",
     "jsonc",
-    "yaml"
+    "yaml",
+    "xml"
   ]
 }
 ```
@@ -222,6 +223,7 @@ We don't recommend using this style in general usages, as there are shared optio
 import {
   combine,
   comments,
+  html,
   ignores,
   imports,
   javascript,
@@ -235,6 +237,7 @@ import {
   typescript,
   unicorn,
   vue,
+  xml,
   yaml,
 } from 'eslint-config-janfr'
 
@@ -242,6 +245,7 @@ export default await combine(
   ignores(),
   javascript(/* Options */),
   comments(),
+  html(),
   node(),
   jsdoc(),
   imports(),
@@ -252,6 +256,7 @@ export default await combine(
   jsonc(),
   yaml(),
   markdown(),
+  xml(),
 )
 ```
 
@@ -339,9 +344,9 @@ To enable React support, need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import bclint from 'eslint-config-janfr'
 
-export default antfu({
+export default bclint({
   react: true,
 })
 ```
