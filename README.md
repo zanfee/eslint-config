@@ -1,4 +1,4 @@
-# @bechtle/eslint-config
+# eslint-config-janfr
 
 [![npm](https://img.shields.io/npm/v/@antfu/eslint-config?color=444&label=)](https://npmjs.com/package/@antfu/eslint-config) [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
@@ -21,7 +21,7 @@
 ### Install
 
 ```bash
-pnpm i -D eslint @bechtle/eslint-config
+pnpm i -D eslint eslint-config-janfr
 ```
 
 ### Create config file
@@ -30,7 +30,7 @@ With [`"type": "module"`](https://nodejs.org/api/packages.html#type) in `package
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default await bclint()
 ```
@@ -39,7 +39,7 @@ With CJS:
 
 ```js
 // eslint.config.js
-const bclint = require('@bechtle/eslint-config').default
+const bclint = require('eslint-config-janfr').default
 
 module.exports = bclint()
 ```
@@ -153,7 +153,7 @@ Normally you only need to import the `bclint` preset:
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default await bclint()
 ```
@@ -162,7 +162,7 @@ And that's it! Or you can configure each integration individually, for example:
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default await bclint({
   // Enable stylistic formatting rules
@@ -194,7 +194,7 @@ The `bclint` factory function also accepts any number of arbitrary custom config
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default await bclint(
   {
@@ -239,7 +239,7 @@ import {
   unicorn,
   vue,
   yaml,
-} from '@bechtle/eslint-config'
+} from 'eslint-config-janfr'
 
 export default await combine(
   ignores(),
@@ -292,7 +292,7 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default await bclint(
   { vue: true, typescript: true },
@@ -316,7 +316,7 @@ We also provided a `overrides` options to make it easier:
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default bclint({
   overrides: {
@@ -383,7 +383,7 @@ You can optionally enable the [type aware rules](https://typescript-eslint.io/li
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default bclint({
   typescript: {
