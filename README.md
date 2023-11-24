@@ -1,11 +1,11 @@
-# @bechtle/eslint-config
+# eslint-config-janfr
 
-[![npm](https://img.shields.io/npm/v/@antfu/eslint-config?color=444&label=)](https://npmjs.com/package/@antfu/eslint-config) [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+[![npm](https://img.shields.io/npm/v/eslint-config-janfr?color=444&label=)](https://www.npmjs.com/package/eslint-config-janfr) [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 
 - Single quotes, no semi
 - Auto fix for formatting (aimed to be used standalone **without** Prettier)
 - Designed to work with TypeScript, JSX, Vue out-of-box
-- Lints also for json, yaml, markdown
+- Lints also for json, yaml, markdown, html, xml
 - Sorted imports, dangling commas
 - Reasonable defaults, best practices, only one-line of config
 - Respects `.gitignore` by default
@@ -13,15 +13,12 @@
 - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 - **Style principle**: Minimal for reading, stable for diff, consistent
 
-> [!IMPORTANT]
-> Since v1.0.0, this config is rewritten to the new [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), check the [release note](https://github.com/antfu/eslint-config/releases/tag/v1.0.0) for more details.
-
 ## Usage
 
 ### Install
 
 ```bash
-pnpm i -D eslint @bechtle/eslint-config
+pnpm i -D eslint eslint-config-janfr
 ```
 
 ### Create config file
@@ -30,7 +27,7 @@ With [`"type": "module"`](https://nodejs.org/api/packages.html#type) in `package
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default await bclint()
 ```
@@ -39,7 +36,7 @@ With CJS:
 
 ```js
 // eslint.config.js
-const bclint = require('@bechtle/eslint-config').default
+const bclint = require('eslint-config-janfr').default
 
 module.exports = bclint()
 ```
@@ -48,12 +45,12 @@ Combined with legacy config:
 
 ```js
 // eslint.config.js
-const antfu = require('@antfu/eslint-config').default
+const bclint = require('eslint-config-janfr').default
 const { FlatCompat } = require('@eslint/eslintrc')
 
 const compat = new FlatCompat()
 
-module.exports = antfu(
+module.exports = bclint(
   {
     ignores: [],
   },
@@ -140,7 +137,8 @@ Add the following settings to your `.vscode/settings.json`:
     "markdown",
     "json",
     "jsonc",
-    "yaml"
+    "yaml",
+    "xml"
   ]
 }
 ```
@@ -153,7 +151,7 @@ Normally you only need to import the `bclint` preset:
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default await bclint()
 ```
@@ -162,7 +160,7 @@ And that's it! Or you can configure each integration individually, for example:
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default await bclint({
   // Enable stylistic formatting rules
@@ -194,7 +192,7 @@ The `bclint` factory function also accepts any number of arbitrary custom config
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default await bclint(
   {
@@ -225,6 +223,7 @@ We don't recommend using this style in general usages, as there are shared optio
 import {
   combine,
   comments,
+  html,
   ignores,
   imports,
   javascript,
@@ -238,13 +237,15 @@ import {
   typescript,
   unicorn,
   vue,
+  xml,
   yaml,
-} from '@bechtle/eslint-config'
+} from 'eslint-config-janfr'
 
 export default await combine(
   ignores(),
   javascript(/* Options */),
   comments(),
+  html(),
   node(),
   jsdoc(),
   imports(),
@@ -255,6 +256,7 @@ export default await combine(
   jsonc(),
   yaml(),
   markdown(),
+  xml(),
 )
 ```
 
@@ -292,7 +294,7 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default await bclint(
   { vue: true, typescript: true },
@@ -316,7 +318,7 @@ We also provided a `overrides` options to make it easier:
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default bclint({
   overrides: {
@@ -342,9 +344,9 @@ To enable React support, need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import bclint from 'eslint-config-janfr'
 
-export default antfu({
+export default bclint({
   react: true,
 })
 ```
@@ -383,7 +385,7 @@ You can optionally enable the [type aware rules](https://typescript-eslint.io/li
 
 ```js
 // eslint.config.js
-import bclint from '@bechtle/eslint-config'
+import bclint from 'eslint-config-janfr'
 
 export default bclint({
   typescript: {
