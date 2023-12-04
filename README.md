@@ -8,9 +8,10 @@
 - Lints also for json, yaml, markdown, html, xml
 - Sorted imports, dangling commas
 - Reasonable defaults, best practices, only one-line of config
-- Respects `.gitignore` by default
+- Opinionated, but [very customizable](#customization)
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
 - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
+- Respects `.gitignore` by default
 - **Style principle**: Minimal for reading, stable for diff, consistent
 
 ## Usage
@@ -29,7 +30,7 @@ With [`"type": "module"`](https://nodejs.org/api/packages.html#type) in `package
 // eslint.config.js
 import bclint from 'eslint-config-janfr'
 
-export default await bclint()
+export default bclint()
 ```
 
 With CJS:
@@ -153,7 +154,7 @@ Normally you only need to import the `bclint` preset:
 // eslint.config.js
 import bclint from 'eslint-config-janfr'
 
-export default await bclint()
+export default bclint()
 ```
 
 And that's it! Or you can configure each integration individually, for example:
@@ -162,7 +163,7 @@ And that's it! Or you can configure each integration individually, for example:
 // eslint.config.js
 import bclint from 'eslint-config-janfr'
 
-export default await bclint({
+export default bclint({
   // Enable stylistic formatting rules
   // stylistic: true,
 
@@ -194,7 +195,7 @@ The `bclint` factory function also accepts any number of arbitrary custom config
 // eslint.config.js
 import bclint from 'eslint-config-janfr'
 
-export default await bclint(
+export default bclint(
   {
     // Configures for bclint's config
   },
@@ -241,7 +242,7 @@ import {
   yaml,
 } from 'eslint-config-janfr'
 
-export default await combine(
+export default combine(
   ignores(),
   javascript(/* Options */),
   comments(),
@@ -297,7 +298,7 @@ Certain rules would only be enabled in specific files, for example, `ts/*` rules
 // eslint.config.js
 import bclint from 'eslint-config-janfr'
 
-export default await bclint(
+export default bclint(
   { vue: true, typescript: true },
   {
     // Remember to specify the file glob here, otherwise it might cause the vue plugin to handle non-vue files
@@ -315,7 +316,7 @@ export default await bclint(
 )
 ```
 
-We also provided a `overrides` options to make it easier:
+We also provided an `overrides` options to make it easier:
 
 ```js
 // eslint.config.js
@@ -337,11 +338,11 @@ export default bclint({
 
 ### Optional Configs
 
+We provide some optional configs for specific use cases, that we don't include their dependencies by default.
+
 #### React
 
-We do include configs for React. But due to the install size of React plugins we didn't include the dependencies by default.
-
-To enable React support, need to explicitly turn it on:
+To enable React support you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
@@ -352,10 +353,29 @@ export default bclint({
 })
 ```
 
-Running `npx eslint` should prompt you to install the required dependencies, otherwise you can install them manually:
+Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
 
 ```bash
 npm i -D eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-refresh
+```
+
+#### UnoCSS
+
+To enable UnoCSS support, you need to explicitly turn it on:
+
+```js
+// eslint.config.js
+import antfu from '@antfu/eslint-config'
+
+export default antfu({
+  unocss: true,
+})
+```
+
+Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
+
+```bash
+npm i -D @unocss/eslint-plugin
 ```
 
 ### Optional Rules
@@ -416,9 +436,19 @@ and then
 npm i -D lint-staged simple-git-hooks
 ```
 
+## View what rules are enabled
+
+[Anthony Fu](https://github.com/antfu) built a visual tool to help you view what rules are enabled in your project and apply them to what files, [eslint-flat-config-viewer](https://github.com/antfu/eslint-flat-config-viewer)
+
+Go to your project root that contains `eslint.config.js` and run:
+
+```bash
+npx eslint-flat-config-viewer
+```
+
 ## Versioning Policy
 
-This project follows [Semantic Versioning](https://semver.org/) for releases. However, since this is just a config and involved with opinions and many moving parts, we don't treat rules changes as breaking changes.
+This project follows [Semantic Versioning](https://semver.org/) for releases. However, since this is just a config and involves opinions and many moving parts, we don't treat rules changes as breaking changes.
 
 ### Changes Considered as Breaking Changes
 
@@ -449,13 +479,13 @@ If you enjoy this code style, and would like to mention it in your project, here
 
 [Why we don't use Prettier](https://antfu.me/posts/why-not-prettier)
 
-### How to lint CSS?
+### How to format CSS?
 
-This config does NOT lint CSS. I personally use [UnoCSS](https://github.com/unocss/unocss) so I don't write CSS. If you still prefer CSS, you can use [stylelint](https://stylelint.io/) for CSS linting.
+This config does NOT lint CSS. I personally use [UnoCSS](https://github.com/unocss/unocss) so I don't write CSS. For better linting, we recommend trying [stylelint](https://stylelint.io/).
 
 ### I prefer XXX...
 
-Sure, you can config and override rules locally in your project to fit your needs. If that still does not work for you, you can always fork this repo and maintain your own.
+Sure, you can configure and override rules locally in your project to fit your needs. If that still does not work for you, you can always fork this repo and maintain your own.
 
 ## Credits
 
