@@ -1,4 +1,4 @@
-import { antfu } from '@antfu/eslint-config'
+import { antfu, getOverrides } from '@antfu/eslint-config'
 import type { Awaitable, FlatConfigItem, UserConfigItem } from '@antfu/eslint-config'
 import { bcstylistic, html, xml } from './configs'
 import type { OptionsConfig } from './types'
@@ -10,7 +10,6 @@ export function bclint(options: OptionsConfig & FlatConfigItem = {}, ...userConf
   const {
     bcstylistic: enableBcstylistic = true,
     html: enableHtml = true,
-    overrides = {},
     xml: enableXml = true,
   } = options
 
@@ -23,13 +22,13 @@ export function bclint(options: OptionsConfig & FlatConfigItem = {}, ...userConf
 
   if (enableHtml) {
     configs.push(html({
-      overrides: overrides.html,
+      overrides: getOverrides(options, 'html' as any),
     }))
   }
 
   if (enableXml) {
     configs.push(xml({
-      overrides: overrides.xml,
+      overrides: getOverrides(options, 'xml' as any),
     }))
   }
 

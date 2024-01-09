@@ -37,7 +37,8 @@
     "json",
     "jsonc",
     "xml",
-    "yaml"
+    "yaml",
+    "toml"
   ],
 
   "pair-diff.patterns": [

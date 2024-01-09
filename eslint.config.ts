@@ -1,6 +1,5 @@
-// @ts-check
 import styleMigrate from '@stylistic/eslint-plugin-migrate'
-import bclint from './dist/index.js'
+import bclint from './src'
 
 export default bclint(
   {
@@ -11,6 +10,7 @@ export default bclint(
       'fixtures',
       '_fixtures',
     ],
+    formatters: true,
   },
   {
     files: ['src/**/*.ts'],

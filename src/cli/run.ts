@@ -8,8 +8,8 @@ import c from 'picocolors'
 
 // @ts-expect-error missing types
 import parse from 'parse-gitignore'
+import isGitClean from '@antfu/eslint-config'
 import { ARROW, CHECK, WARN, eslintVersion, version, vscodeSettingsString } from './constants'
-import { isGitClean } from './utils'
 
 export interface RuleOptions {
   /**
@@ -30,11 +30,19 @@ export async function run(options: RuleOptions = {}) {
 
   if (fs.existsSync(pathFlatConfig)) {
     console.log(c.yellow(`${WARN} eslint.config.js already exists, migration wizard exited.`))
-    return
+    return process.exit(1)
   }
 
   if (!SKIP_GIT_CHECK && !isGitClean()) {
-    throw new Error('There are uncommitted changes in the current repository, please commit them and try again')
+    const { confirmed } = await prompts({
+      initial: false,
+      message: 'There are uncommitted changes in the current repository, are you sure to continue?',
+      name: 'confirmed',
+      type: 'confirm',
+    })
+    if (!confirmed) {
+      return process.exit(1)
+    }
   }
 
   // Update package.json

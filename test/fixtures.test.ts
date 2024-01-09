@@ -19,6 +19,7 @@ runWithConfig('js', {
 runWithConfig('all', {
   typescript: true,
   vue: true,
+  svelte: true,
 })
 runWithConfig('no-style', {
   typescript: true,
@@ -51,6 +52,27 @@ runWithConfig(
   {
     rules: {
       'ts/consistent-type-definitions': ['error', 'type'],
+    },
+  },
+)
+
+runWithConfig(
+  'with-formatters',
+  {
+    typescript: true,
+    vue: true,
+    formatters: true,
+  },
+)
+
+runWithConfig(
+  'no-markdown-with-formatters',
+  {
+    jsx: false,
+    vue: false,
+    markdown: false,
+    formatters: {
+      markdown: true,
     },
   },
 )
