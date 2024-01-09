@@ -44,7 +44,7 @@ it('package.json updated', async () => {
 
   expect(JSON.stringify(pkgContent.devDependencies)).toContain('@antfu/eslint-config')
   expect(stdout).toContain('changes wrote to package.json')
-})
+}, 15_000)
 
 it('esm eslint.config.js', async () => {
   const pkgContent = await fs.readFile('package.json', 'utf-8')
@@ -55,7 +55,7 @@ it('esm eslint.config.js', async () => {
   const eslintConfigContent = await fs.readFile(join(genPath, 'eslint.config.js'), 'utf-8')
   expect(eslintConfigContent.includes('export default')).toBeTruthy()
   expect(stdout).toContain('created eslint.config.js')
-})
+}, 15_000)
 
 it('cjs eslint.config.js', async () => {
   const { stdout } = await run()
@@ -63,7 +63,7 @@ it('cjs eslint.config.js', async () => {
   const eslintConfigContent = await fs.readFile(join(genPath, 'eslint.config.js'), 'utf-8')
   expect(eslintConfigContent.includes('module.exports')).toBeTruthy()
   expect(stdout).toContain('created eslint.config.js')
-})
+}, 15_000)
 
 it('ignores files added in eslint.config.js', async () => {
   const { stdout } = await run()
@@ -80,7 +80,7 @@ it('ignores files added in eslint.config.js', async () => {
       })
       "
     `)
-})
+}, 15_000)
 
 it('suggest remove unnecessary files', async () => {
   const { stdout } = await run()

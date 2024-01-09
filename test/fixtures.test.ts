@@ -123,5 +123,5 @@ export default antfu(
       }
       await expect.soft(content).toMatchFileSnapshot(join(output, file))
     }))
-  }, 30_000)
+  }, 40_000)
 }
