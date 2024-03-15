@@ -5,6 +5,13 @@ import type { OptionsConfig } from './types'
 
 /**
  * Construct an array of ESLint flat config items.
+ *
+ * @param {OptionsConfig & FlatConfigItem} options
+ *  The options for generating the ESLint configurations.
+ * @param {Awaitable<UserConfigItem | UserConfigItem[]>[]} userConfigs
+ *  The user configurations to be merged with the generated configurations.
+ * @returns {Promise<UserConfigItem[]>}
+ *  The merged ESLint configurations.
  */
 export function bclint(options: OptionsConfig & FlatConfigItem = {}, ...userConfigs: Awaitable<UserConfigItem | UserConfigItem[]>[]): Promise<UserConfigItem[]> {
   const {

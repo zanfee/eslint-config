@@ -12,7 +12,7 @@
 - [ESLint Flat config](https://eslint.org/docs/latest/use/configure/configuration-files-new), compose easily!
 - Using [ESLint Stylistic](https://github.com/eslint-stylistic/eslint-stylistic)
 - Respects `.gitignore` by default
-- Optional [React](#react), [Svelte](#svelte), [UnoCSS](#unocss) support
+- Optional [React](#react), [Svelte](#svelte), [UnoCSS](#unocss), [Astro](#astro) support
 - Optional [formatters](#formatters) support for CSS, HTML, etc.
 - **Style principle**: Minimal for reading, stable for diff, consistent
 
@@ -190,7 +190,7 @@ export default bclint({
 
   // `.eslintignore` is no longer supported in Flat config, use `ignores` instead
   ignores: [
-    './fixtures',
+    '**/fixtures',
     // ...globs
   ]
 })
@@ -434,23 +434,23 @@ Running `npx eslint` should prompt you to install the required dependencies, oth
 npm i -D eslint-plugin-svelte
 ```
 
-#### UnoCSS
+#### Astro
 
-To enable UnoCSS support, you need to explicitly turn it on:
+To enable astro support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
 import antfu from '@antfu/eslint-config'
 
 export default antfu({
-  unocss: true,
+  astro: true,
 })
 ```
 
 Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
 
 ```bash
-npm i -D @unocss/eslint-plugin
+npm i -D eslint-plugin-astro
 ```
 
 #### UnoCSS

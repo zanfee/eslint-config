@@ -15,7 +15,7 @@ export interface OptionsConfig extends OptionsConfigAntfu {
    *
    * @default true
    */
-  bcstylistic?: boolean | StylisticConfig
+  bcstylistic?: boolean | (StylisticConfig & OptionsOverrides)
 
   /**
    * Enable HTML support.
