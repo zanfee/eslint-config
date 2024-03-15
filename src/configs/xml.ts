@@ -27,11 +27,8 @@ export async function xml(options: OptionsStylistic & OptionsOverrides = {}): Pr
         'html/no-duplicate-attrs': 'error',
         'html/no-duplicate-id': 'error',
         'html/no-extra-spacing-attrs': ['error', { enforceBeforeSelfClose: true }],
-        'html/no-obsolete-tags': 'error',
         'html/quotes': ['error', 'double'],
-        'html/require-img-alt': 'error',
-        'html/require-li-container': 'error',
-        'html/require-title': 'error',
+        'html/require-closing-tags': 'error',
 
         // Disabled because it caused errors
         'style/spaced-comment': 'off',

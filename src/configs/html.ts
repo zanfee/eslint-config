@@ -33,6 +33,7 @@ export async function html(options: OptionsStylistic & OptionsOverrides = {}): P
         'html/require-closing-tags': 'error',
         'html/require-doctype': 'error',
         'html/require-img-alt': 'error',
+        'html/require-lang': 'error',
         'html/require-li-container': 'error',
         'html/require-title': 'error',
 
