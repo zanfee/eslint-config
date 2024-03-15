@@ -102,7 +102,7 @@ module.exports = antfu({\n${antfuConfig}\n})
 
   const files = fs.readdirSync(cwd)
   const legacyConfig: string[] = []
-  files.forEach((file) => {
+  files.forEach((file: any) => {
     if (/eslint|prettier/.test(file)
       && !/eslint.config./.test(file)) {
       legacyConfig.push(file)

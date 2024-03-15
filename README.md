@@ -472,25 +472,6 @@ Running `npx eslint` should prompt you to install the required dependencies, oth
 npm i -D @unocss/eslint-plugin
 ```
 
-#### UnoCSS
-
-To enable UnoCSS support, you need to explicitly turn it on:
-
-```js
-// eslint.config.js
-import antfu from '@antfu/eslint-config'
-
-export default antfu({
-  unocss: true,
-})
-```
-
-Running `npx eslint` should prompt you to install the required dependencies, otherwise, you can install them manually:
-
-```bash
-npm i -D @unocss/eslint-plugin
-```
-
 ### Optional Rules
 
 This config also provides some optional plugins/rules for extended usage.
