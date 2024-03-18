@@ -1,5 +1,6 @@
 import type { FlatConfigItem, OptionsOverrides, OptionsStylistic } from '@antfu/eslint-config'
-import { parserHtml, pluginHtml } from '../plugins'
+import pluginHtml from '@html-eslint/eslint-plugin'
+import parserHtml from '@html-eslint/parser'
 
 export async function xml(options: OptionsStylistic & OptionsOverrides = {}): Promise<FlatConfigItem[]> {
   const {
