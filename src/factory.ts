@@ -30,7 +30,9 @@ export function bclint(options: OptionsConfig & FlatConfigItem = {}, ...userConf
 
   // Base configs
   if (enableBcstylistic) {
-    configs.push(bcstylistic())
+    configs.push(bcstylistic({
+      overrides: getOverrides(options, 'bcstylistic' as any),
+    }))
   }
 
   if (enableHtml) {
