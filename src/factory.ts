@@ -1,6 +1,6 @@
 import { antfu, getOverrides } from '@antfu/eslint-config'
 import type { Awaitable, FlatConfigItem, UserConfigItem } from '@antfu/eslint-config'
-import { bcstylistic, html, xml } from './configs'
+import { bcjavascript, bcstylistic, html, xml } from './configs'
 import type { OptionsConfig } from './types'
 
 /**
@@ -15,6 +15,7 @@ import type { OptionsConfig } from './types'
  */
 export function bclint(options: OptionsConfig & FlatConfigItem = {}, ...userConfigs: Awaitable<UserConfigItem | UserConfigItem[]>[]): Promise<UserConfigItem[]> {
   const {
+    bcjavascript: enableBcjavascript = true,
     bcstylistic: enableBcstylistic = true,
     html: enableHtml = true,
     xml: enableXml = true,
@@ -29,6 +30,12 @@ export function bclint(options: OptionsConfig & FlatConfigItem = {}, ...userConf
   const configs: Awaitable<FlatConfigItem[]>[] = []
 
   // Base configs
+  if (enableBcjavascript) {
+    configs.push(bcjavascript({
+      overrides: getOverrides(options, 'bcjavascript' as any),
+    }))
+  }
+
   if (enableBcstylistic) {
     configs.push(bcstylistic({
       overrides: getOverrides(options, 'bcstylistic' as any),

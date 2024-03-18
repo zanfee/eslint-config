@@ -18,6 +18,13 @@ export interface OptionsConfig extends OptionsConfigAntfu {
   bcstylistic?: boolean | (StylisticConfig & OptionsOverrides)
 
   /**
+   * Enable Bechtle's JavaScript rules.
+   *
+   * @default true
+   */
+  bcjavascript?: boolean | OptionsOverrides
+
+  /**
    * Enable HTML support.
    *
    * @default true
