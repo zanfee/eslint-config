@@ -18,6 +18,14 @@
 
 ## Usage
 
+### Wizard
+
+We provided a CLI tool to help you set up your project, or migrate from the legacy config to the new flat config.
+
+```bash
+npx @antfu/eslint-config@latest
+```
+
 ### Install
 
 ```bash
@@ -87,16 +95,6 @@ For example:
   }
 }
 ```
-
-### Migration
-
-We provided an experimental CLI tool to help you migrate from the legacy config to the new flat config.
-
-```bash
-npx @antfu/eslint-config@latest
-```
-
-Before running the migration, make sure to commit your unsaved changes first.
 
 ## VS Code support (auto fix)
 
@@ -366,7 +364,7 @@ Use external formatters to format files that ESLint cannot handle yet (`.css`, `
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import bclint from 'eslint-conifg-janfr'
 
 export default antfu({
   formatters: {
@@ -421,9 +419,9 @@ To enable svelte support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import bclint from 'eslint-config-janfr'
 
-export default antfu({
+export default bclint({
   svelte: true,
 })
 ```
@@ -440,9 +438,9 @@ To enable astro support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import bclint from 'eslint-config-janfr'
 
-export default antfu({
+export default bclint({
   astro: true,
 })
 ```
@@ -459,9 +457,9 @@ To enable UnoCSS support, you need to explicitly turn it on:
 
 ```js
 // eslint.config.js
-import antfu from '@antfu/eslint-config'
+import bclint from 'eslint-config-janfr'
 
-export default antfu({
+export default bclint({
   unocss: true,
 })
 ```
