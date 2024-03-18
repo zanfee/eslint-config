@@ -29,7 +29,6 @@ export async function xml(options: OptionsStylistic & OptionsOverrides = {}): Pr
         'html/no-duplicate-id': 'error',
         'html/no-extra-spacing-attrs': ['error', { enforceBeforeSelfClose: true }],
         'html/quotes': ['error', 'double'],
-        'html/require-closing-tags': 'error',
 
         // Disabled because it caused errors
         'style/spaced-comment': 'off',
