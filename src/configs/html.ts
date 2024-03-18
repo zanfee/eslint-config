@@ -10,6 +10,7 @@ export async function html(options: OptionsStylistic & OptionsOverrides = {}): P
 
   const {
     indent = 2,
+    quotes = 'double',
   } = typeof stylistic === 'boolean' ? {} : stylistic
 
   return [
@@ -30,7 +31,7 @@ export async function html(options: OptionsStylistic & OptionsOverrides = {}): P
         'html/no-extra-spacing-attrs': ['error', { enforceBeforeSelfClose: true }],
         'html/no-multiple-h1': 'error',
         'html/no-obsolete-tags': 'error',
-        'html/quotes': ['error', 'double'],
+        'html/quotes': ['error', quotes],
         'html/require-closing-tags': 'error',
         'html/require-doctype': 'error',
         'html/require-img-alt': 'error',

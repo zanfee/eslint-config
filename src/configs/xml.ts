@@ -10,6 +10,7 @@ export async function xml(options: OptionsStylistic & OptionsOverrides = {}): Pr
 
   const {
     indent = 2,
+    quotes = 'double',
   } = typeof stylistic === 'boolean' ? {} : stylistic
 
   return [
@@ -28,7 +29,7 @@ export async function xml(options: OptionsStylistic & OptionsOverrides = {}): Pr
         'html/no-duplicate-attrs': 'error',
         'html/no-duplicate-id': 'error',
         'html/no-extra-spacing-attrs': ['error', { enforceBeforeSelfClose: true }],
-        'html/quotes': ['error', 'double'],
+        'html/quotes': ['error', quotes],
 
         // Disabled because it caused errors
         'style/spaced-comment': 'off',

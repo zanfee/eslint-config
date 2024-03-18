@@ -20,6 +20,12 @@ export function bclint(options: OptionsConfig & FlatConfigItem = {}, ...userConf
     xml: enableXml = true,
   } = options
 
+  const stylisticOptions = options.stylistic === false
+    ? false
+    : typeof options.stylistic === 'object'
+      ? options.stylistic
+      : {}
+
   const configs: Awaitable<FlatConfigItem[]>[] = []
 
   // Base configs
@@ -30,12 +36,14 @@ export function bclint(options: OptionsConfig & FlatConfigItem = {}, ...userConf
   if (enableHtml) {
     configs.push(html({
       overrides: getOverrides(options, 'html' as any),
+      stylistic: stylisticOptions,
     }))
   }
 
   if (enableXml) {
     configs.push(xml({
       overrides: getOverrides(options, 'xml' as any),
+      stylistic: stylisticOptions,
     }))
   }
 
