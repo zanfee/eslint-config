@@ -36,7 +36,7 @@ export function bclint(options: OptionsConfig & FlatConfigItem = {}, ...userConf
     }))
   }
 
-  if (enableBcstylistic) {
+  if (enableBcstylistic && stylisticOptions) {
     configs.push(bcstylistic({
       overrides: getOverrides(options, 'bcstylistic' as any),
     }))
