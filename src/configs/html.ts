@@ -1,9 +1,10 @@
-import type { FlatConfigItem, OptionsOverrides, OptionsStylistic } from '@antfu/eslint-config'
+import type { FlatConfigItem, OptionsFormatters, OptionsOverrides, OptionsStylistic } from '@antfu/eslint-config'
 import pluginHtml from '@html-eslint/eslint-plugin'
 import parserHtml from '@html-eslint/parser'
 
-export async function html(options: OptionsStylistic & OptionsOverrides = {}): Promise<FlatConfigItem[]> {
+export async function html(options: OptionsStylistic & OptionsOverrides & { formatters?: OptionsFormatters | boolean } = {}): Promise<FlatConfigItem[]> {
   const {
+    formatters = false,
     overrides = {},
     stylistic = true,
   } = options
@@ -12,6 +13,8 @@ export async function html(options: OptionsStylistic & OptionsOverrides = {}): P
     indent = 2,
     quotes = 'double',
   } = typeof stylistic === 'boolean' ? {} : stylistic
+
+  const useFormatter = formatters === true || (typeof formatters === 'object' && formatters?.html)
 
   return [
     {
@@ -32,7 +35,7 @@ export async function html(options: OptionsStylistic & OptionsOverrides = {}): P
         'html/no-multiple-h1': 'error',
         'html/no-obsolete-tags': 'error',
         'html/quotes': ['error', quotes],
-        'html/require-closing-tags': 'error',
+        'html/require-closing-tags': useFormatter ? 'off' : 'error',
         'html/require-doctype': 'error',
         'html/require-img-alt': 'error',
         'html/require-lang': 'error',
