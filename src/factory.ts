@@ -44,6 +44,7 @@ export function bclint(options: OptionsConfig & FlatConfigItem = {}, ...userConf
 
   if (enableHtml) {
     configs.push(html({
+      formatters: options.formatters,
       overrides: getOverrides(options, 'html' as any),
       stylistic: stylisticOptions,
     }))
