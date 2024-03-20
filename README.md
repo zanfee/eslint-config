@@ -23,7 +23,7 @@
 We provided a CLI tool to help you set up your project, or migrate from the legacy config to the new flat config.
 
 ```bash
-npx @antfu/eslint-config@latest
+npx eslint-config-janfr@latest
 ```
 
 ### Install
@@ -366,7 +366,7 @@ Use external formatters to format files that ESLint cannot handle yet (`.css`, `
 // eslint.config.js
 import bclint from 'eslint-conifg-janfr'
 
-export default antfu({
+export default bclint({
   formatters: {
     /**
      * Format CSS, LESS, SCSS files, also the `<style>` blocks in Vue
